@@ -233,9 +233,9 @@ make_word_cloud(rc_df$lyrics[4])
 
 
 # Testing
+
 # Combine all lyrics from playlist
-df <- playlist_to_df(playlistID)
-playlistLyrics <- paste(unlist(df[,4]), collapse=' ')
+playlistLyrics <- paste(unlist(rc_df[,4]), collapse=' ')
 
 # Words in vector
 words_vec <- VectorSource(playlistLyrics)
@@ -265,8 +265,8 @@ wordCloud <- wordcloud(names(wordCounts), wordCounts, max.words = 25)
 make_word_cloud_from_playlist <- function(playlistID) {
   
   # Combine all lyrics from playlist
-  
-  playlistLyrics <- paste(unlist(rc_df[,4]), collapse=' ')
+  df <- playlist_to_df(playlistID)
+  playlistLyrics <- paste(unlist(df[,4]), collapse=' ')
   
   # Words in vector
   words_vec <- VectorSource(playlistLyrics)
