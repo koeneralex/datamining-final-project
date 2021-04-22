@@ -156,7 +156,6 @@ playlistsNames <- list(RapCaviar, MostNecessary, SignedXOXO, TodaysTopHits,
                        Alternative00s)
 
 
-
 list1 <- list()
 
 for (i in 1:length(playlistsNames)) {
