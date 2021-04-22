@@ -144,3 +144,24 @@ make_word_cloud_from_playlist(RapCaviar)
 
 
 ################################################################################
+## Running Functions
+
+# Getting song data
+df <- get_album_data("Pooh Shiesty", "shiesty season")
+
+
+playlistsNames <- list(RapCaviar, MostNecessary, SignedXOXO, TodaysTopHits,
+                       PopRising, RockThis, AltNOW, RockHard, KickassMetal,
+                       NewCore, NuMetalGeneration, Alternative10s, EarlyAlternative,
+                       Alternative00s)
+
+vector1 <- list(length(playlistsNames))
+
+for (i in 1:length(playlistsNames)) {
+  
+  vector1[i] <- playlist_to_df(playlistsNames[i])
+  
+}
+
+playlist_to_df(playlistsNames)
+
