@@ -3,7 +3,7 @@
     "path": "~/Library/Mobile Documents/com~apple~CloudDocs/School/USF-Spring-2021/data-mining/Final-Project/datamining-final-project/Project_File/Spotify-Organized-4-22.R",
     "project_path": "Spotify-Organized-4-22.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "3163624988",
     "contents": "",
     "dirty": false,
     "created": 1619127239626.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "3,0",
-        "scrollLine": "0"
+        "cursorPosition": "165,0",
+        "scrollLine": "147"
     },
     "folds": "",
-    "lastKnownWriteTime": 1619127967,
+    "lastKnownWriteTime": 1619135300,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1619127967881,
+    "last_content_update": 1619135300382,
     "read_only": false,
     "read_only_alternatives": []
 }

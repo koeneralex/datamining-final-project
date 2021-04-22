@@ -140,7 +140,7 @@ word_cloud_from_playlist <- function(playlistID) {
 }
 
 # Testing function
-make_word_cloud_from_playlist(RapCaviar)
+word_cloud_from_playlist(RapCaviar)
 
 
 ################################################################################
@@ -164,5 +164,5 @@ for (i in 1:length(playlistsNames)) {
   
 }
 
-playlist_to_df(playlistsNames)
+save.image()
 
