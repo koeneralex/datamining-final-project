@@ -139,7 +139,7 @@ playlist_to_df <- function(playlist){
 #run lines 6-23, then function block, then you can run this test
 #test took a while (1 min) to run on my computer. There will be error messages, so just wait til it completes
 rc_df <- playlist_to_df(RapCaviar)
-rc_df #10 missing song lyrics
+View(rc_df) #10 missing song lyrics
 
 #new playlist
 MostNec <- get_playlist("37i9dQZF1DX2RxBh64BHjQ")
