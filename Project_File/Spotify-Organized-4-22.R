@@ -155,11 +155,13 @@ playlistsNames <- list(RapCaviar, MostNecessary, SignedXOXO, TodaysTopHits,
                        NewCore, NuMetalGeneration, Alternative10s, EarlyAlternative,
                        Alternative00s)
 
-vector1 <- list(length(playlistsNames))
+
+
+list1 <- list()
 
 for (i in 1:length(playlistsNames)) {
   
-  vector1[i] <- playlist_to_df(playlistsNames[i])
+  list1[[i]] <- playlist_to_df(playlistsNames[[i]])
   
 }
 
