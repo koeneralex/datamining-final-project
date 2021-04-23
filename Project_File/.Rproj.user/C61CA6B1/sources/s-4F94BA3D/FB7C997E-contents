@@ -131,6 +131,7 @@ View(rc_df) #10 missing song lyrics
 
 ################################################################################
 ## New Function to pull danceablitiy, etc.
+
 playlist_to_df_other <- function(playlist){
   
   #creates df of Track Names and Pop Score
