@@ -5,10 +5,14 @@
 #library(devtools)
 #devtools::install_github("")
 #install.packages('genius')
+#install.packages("lexicon")
 library(spotifyr)
 library(genius)
 library(tm)
 library(wordcloud)
+library(tidyr)
+library(lexicon)
+library(tidytext)
 
 
 ################################################################################
@@ -102,6 +106,7 @@ playlist_to_df <- function(playlist){
     playID <- playlist[["id"]]
     features_df <- get_playlist_audio_features("spotify",playID)
     
+    try({
     outputDF$danceability <- NA
     outputDF$danceability <- features_df$danceability
     outputDF$key <- features_df$key
@@ -114,7 +119,7 @@ playlist_to_df <- function(playlist){
     outputDF$liveness <- features_df$liveness
     outputDF$valence <- features_df$valence
     outputDF$tempo <- features_df$tempo
-    
+    })
   }
   return(outputDF)
 }
@@ -183,8 +188,6 @@ for (i in 1:length(playlistsNames)) {
   
 }
 
-save.image()
-
 
 list2 <- list()
 
@@ -194,8 +197,18 @@ for (i in 1:length(playlistsNames)) {
   
 }
 
-save.image()
+
+list3 <- list()
+
+for (i in 1:length(playlistsNames)) {
+  
+  list3[[i]] <- playlist_to_df(playlistsNames[[i]])
+  
+}
 
 
 list2[[5]] <- playlist_to_df(playlistsNames[[5]])
+
+save.image()
+
 

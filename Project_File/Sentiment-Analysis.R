@@ -11,6 +11,7 @@ library(tm)
 library(wordcloud)
 library(XML)
 library(tidyverse)
+library(tidytext)
 
 
 ################################################################################
@@ -83,6 +84,14 @@ totalNeg / mlkWordcount
 ################################################################################
 # Sentiment Analysis Spotify ------
 
+# Tidy dictionaries
+
+tidytext::sentiments
+
+NRC <- nrc_emotions
+
+
+
 # Standard positive/negative dictionary
 pos <- "data/pos-words.txt"
 neg <- "data/neg-words.txt"
@@ -149,3 +158,11 @@ totalNeg / lyricsWordcount
 
 
 ################################################################################
+## Syuzhet Package
+
+#install.packages("syuzhet")
+library(syuzhet)
+
+testLyrics <- list1[[1]]$lyrics
+
+
