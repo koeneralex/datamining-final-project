@@ -98,9 +98,10 @@ head(n, 50)
 
 
 # Add lyrics to a character vector here called "lyrics".
+testLyrics <- list1[[1]]$lyrics
 
 
-words.vec <- VectorSource(lyrics)
+words.vec <- VectorSource(testLyrics)
 words.corpus <- Corpus(words.vec)
 words.corpus
 
@@ -115,7 +116,7 @@ tdm <- TermDocumentMatrix(words.corpus)
 lyricsMatrix <- as.matrix(tdm)
 
 
-wordCounts <- rowSums(mlkMatrix)
+wordCounts <- rowSums(lyricsMatrix)
 wordCounts <- sort(wordCounts, decreasing=TRUE)
 head(wordCounts)
 
