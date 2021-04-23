@@ -130,6 +130,36 @@ View(rc_df) #10 missing song lyrics
 
 
 ################################################################################
+## New Function to pull danceablitiy, etc.
+playlist_to_df_other <- function(playlist){
+  
+  #creates df of Track Names and Pop Score
+  outputDF <- data.frame(playlist[["tracks"]][["items"]][["track.name"]],playlist[["tracks"]][["items"]][["track.popularity"]], playlist[["tracks"]][["items"]][["track.id"]])
+  colnames(outputDF)<-c("name","popularity","track.id")
+  outputDF$name <-gsub("\\s*\\([^\\)]+\\)","",as.character(outputDF$name))
+  #removes all parenthesis and everything inside them
+  
+  #artist name added to df
+  vector1 <- character(nrow(outputDF))
+  for(i in 1:nrow(outputDF)){
+    vector1[i]<- playlist[["tracks"]][["items"]][["track.artists"]][[i]][["name"]][[1]]
+  }
+  outputDF$artist <- vector1
+  
+  #lyric time
+  outputDF$lyrics <-NA
+  
+  #error handling to keep on adding to df if lyrics cannot be found
+  for(i in 1:nrow(outputDF)){
+    try({
+      lyrics_from_genius <- genius_lyrics(artist = outputDF$artist[i],song = outputDF$name[i], info = "simple")
+      lyric_list <- lyrics_from_genius$lyric
+      outputDF$lyrics[i] <- paste(unlist(lyric_list),collapse=' ')
+      
+    })
+  }
+}
+################################################################################
 ## Word Cloud  -----
 
 word_cloud_from_playlist <- function(playlistID) {
