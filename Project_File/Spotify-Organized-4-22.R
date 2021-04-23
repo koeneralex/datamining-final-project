@@ -102,6 +102,7 @@ playlist_to_df <- function(playlist){
     playID <- playlist[["id"]]
     features_df <- get_playlist_audio_features("spotify",playID)
     
+    outputDF$danceability <- NA
     outputDF$danceability <- features_df$danceability
     outputDF$key <- features_df$key
     outputDF$energy <- features_df$energy
@@ -183,4 +184,18 @@ for (i in 1:length(playlistsNames)) {
 }
 
 save.image()
+
+
+list2 <- list()
+
+for (i in 1:length(playlistsNames)) {
+  
+  list2[[i]] <- playlist_to_df(playlistsNames[[i]])
+  
+}
+
+save.image()
+
+
+list2[[5]] <- playlist_to_df(playlistsNames[[5]])
 
