@@ -166,5 +166,4 @@ for (i in 1:length(playlistsNames)) {
 
 save.image()
 
-#pull edit
-
+list1[[1]]$lyrics

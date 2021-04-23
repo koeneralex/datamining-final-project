@@ -166,3 +166,4 @@ for (i in 1:length(playlistsNames)) {
 
 save.image()
 
+list1[[1]]$lyrics
