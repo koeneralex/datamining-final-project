@@ -96,6 +96,24 @@ playlist_to_df <- function(playlist){
       outputDF$lyrics[i] <- paste(unlist(lyric_list),collapse=' ')
       
     })
+    
+    
+    #Adds additional track audio features to our data frame. key, energy, loudness, mode etc...
+    playID <- playlist[["id"]]
+    features_df <- get_playlist_audio_features("spotify",playID)
+    
+    outputDF$danceability <- features_df$danceability
+    outputDF$key <- features_df$key
+    outputDF$energy <- features_df$energy
+    outputDF$loudness <- features_df$loudness
+    outputDF$mode <- features_df$mode
+    outputDF$speechiness <- features_df$speechiness
+    outputDF$acousticness <- features_df$acousticness
+    outputDF$instrumentalness <- features_df$instrumentalness
+    outputDF$liveness <- features_df$liveness
+    outputDF$valence <- features_df$valence
+    outputDF$tempo <- features_df$tempo
+    
   }
   return(outputDF)
 }
@@ -147,7 +165,7 @@ word_cloud_from_playlist(RapCaviar)
 ## Running Functions
 
 # Getting song data
-df <- get_album_data("Pooh Shiesty", "shiesty season")
+#df <- get_album_data("Pooh Shiesty", "shiesty season")
 
 
 playlistsNames <- list(RapCaviar, MostNecessary, SignedXOXO, TodaysTopHits,
@@ -166,4 +184,3 @@ for (i in 1:length(playlistsNames)) {
 
 save.image()
 
-list1[[1]]$lyrics
