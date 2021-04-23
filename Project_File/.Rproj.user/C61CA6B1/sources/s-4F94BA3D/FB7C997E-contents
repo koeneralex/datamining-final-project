@@ -253,7 +253,13 @@ for (i in 1:length(playlistsNames)) {
 }
 
 
-list2[[5]] <- playlist_to_df(playlistsNames[[5]])
+list4 <- list()
+
+for (i in 1:length(playlistsNames)) {
+  
+  list4[[i]] <- playlist_to_df_other(playlistsNames[[i]])
+  
+}
 
 save.image()
 
