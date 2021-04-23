@@ -13,6 +13,7 @@ library(wordcloud)
 library(tidyr)
 library(lexicon)
 library(tidytext)
+library(plyr)
 
 
 ################################################################################
@@ -130,12 +131,10 @@ View(rc_df) #10 missing song lyrics
 
 
 ################################################################################
-<<<<<<< HEAD
+
 ## New Function to pull danceablitiy, etc.
 
-=======
 ## New Function to pull danceablitiy, etc. for final 4 playlist.
->>>>>>> 3cc22b6a0b90be4362b55f725397c12b4871ed36
 playlist_to_df_other <- function(playlist){
   
   #creates df of Track Names and Pop Score
@@ -165,9 +164,6 @@ playlist_to_df_other <- function(playlist){
     
   }
   
-<<<<<<< HEAD
-  return(outputDF)
-=======
   #Adds additional track audio features to our data frame. key, energy, loudness, mode etc...
   playID <- playlist[["id"]]
   features_df <- get_playlist_audio_features("spotify",playID)
@@ -177,7 +173,6 @@ playlist_to_df_other <- function(playlist){
   
   
   return(outputMerged)
->>>>>>> 3cc22b6a0b90be4362b55f725397c12b4871ed36
 }
 
 ################################################################################
