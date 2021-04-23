@@ -131,6 +131,7 @@ View(rc_df) #10 missing song lyrics
 
 ################################################################################
 ## New Function to pull danceablitiy, etc.
+
 playlist_to_df_other <- function(playlist){
   
   #creates df of Track Names and Pop Score
@@ -158,6 +159,8 @@ playlist_to_df_other <- function(playlist){
       
     })
   }
+  
+  return(outputDF)
 }
 ################################################################################
 ## Word Cloud  -----
@@ -232,7 +235,7 @@ list3 <- list()
 
 for (i in 1:length(playlistsNames)) {
   
-  list3[[i]] <- playlist_to_df(playlistsNames[[i]])
+  list3[[i]] <- playlist_to_df_other(playlistsNames[[i]])
   
 }
 
