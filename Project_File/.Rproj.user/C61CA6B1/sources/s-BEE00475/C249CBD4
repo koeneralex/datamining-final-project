@@ -1,0 +1,28 @@
+{
+    "id": "C249CBD4",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1619299559144.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "id": "7c47b95551fb4140ac940b3f00990848",
+        "name": "sentiment_analysis",
+        "title": "sentiment_analysis",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1619299559144,
+    "read_only": false,
+    "read_only_alternatives": []
+}
