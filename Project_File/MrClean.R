@@ -11,8 +11,10 @@ library(tidyr)
 library(lexicon)
 library(tidytext)
 library(ggplot2)
+library(forcats)
+library(hrbrthemes)
+library(viridis)
 
-v_list <- list2[-5]
 
 MrClean <- function(list){
   
@@ -25,17 +27,36 @@ MrClean <- function(list){
     
     print(i)
     
-    list[[i]]$popularity <- replace_na(list[[i]]$popularity, list_avgs[[i]]$popularity)
+    # Set the text to lowercase
+    list[[i]]$lyrics <- tolower(list[[i]]$lyrics)
+    
+    # Remove mentions, urls, emojis, numbers, punctuations, etc.
+    list[[i]]$lyrics <- gsub("@\\w+", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("https?://.+", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("\\d+\\w*\\d*", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("#\\w+", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("[^\x01-\x7F]", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("[[:punct:]]", " ", list[[i]]$lyrics)
+    
+    
+    # Remove spaces and newlines
+    list[[i]]$lyrics <- gsub("\n", " ", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("^\\s+", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("\\s+$", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("[ |\t]+", " ", list[[i]]$lyrics)
+    
+    
+    list[[i]]$popularity <- replace_na(list[[i]]$popularity, as.integer(list_avgs[[i]]$popularity))
     
     list[[i]]$danceability <- replace_na(list[[i]]$danceability, list_avgs[[i]]$danceability)
     
-    list[[i]]$key <- replace_na(list[[i]]$key, list_avgs[[i]]$key)
+    list[[i]]$key <- replace_na(list[[i]]$key, as.integer(list_avgs[[i]]$key))
     
     list[[i]]$energy <- replace_na(list[[i]]$energy, list_avgs[[i]]$energy)
     
     list[[i]]$loudness <- replace_na(list[[i]]$loudness, list_avgs[[i]]$loudness)
     
-    list[[i]]$mode <- replace_na(list[[i]]$mode, list_avgs[[i]]$mode)
+    list[[i]]$mode <- replace_na(list[[i]]$mode, as.integer(list_avgs[[i]]$mode))
     
     list[[i]]$speechiness <- replace_na(list[[i]]$speechiness, list_avgs[[i]]$speechiness)
     
@@ -53,7 +74,9 @@ MrClean <- function(list){
   return(list)
 }
 
-clean_list2 <- MrClean(v_list)
+clean_list <- MrClean(list4)
+
+
 
 
 
