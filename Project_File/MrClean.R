@@ -3,38 +3,53 @@
 #Victoria Garcia
 
 library(dplyr)
+library(spotifyr)
+library(genius)
+library(tm)
+library(wordcloud)
+library(tidyr)
+library(lexicon)
+library(tidytext)
 
-list2_v <- list2
-
-list2_v_avgs <- lapply(list2_v, function(x) lapply(x, mean, na.rm=TRUE))
-
-  for (i in 1:length(list2_v)){
+MrClean <- function(list){
+  
+  list_avgs <- lapply(list, function(x) lapply(x, mean, na.rm=TRUE))
+  
+  print(list_avgs)
+  str(list_avgs)
+  
+  for (i in 1:length(list)) {
     
     print(i)
     
-    list2_v[[i]]$popularity_2 <- replace_na(list2_v[[i]][["popularity"]], list2_v_avgs[[i]][["popularity"]])
+    list[[i]]$popularity <- replace_na(list[[i]]$popularity, list_avgs[[i]]$popularity)
     
-    list2_v[[i]]$danceability_2 <- replace_na(list2_v[[i]][["danceability"]], list2_v_avgs[[i]][["danceability"]])
+    list[[i]]$danceability <- replace_na(list[[i]]$danceability, list_avgs[[i]]$danceability)
     
-    list2_v[[i]]$key_2 <- replace_na(list2_v[[i]][["key"]], list2_v_avgs[[i]][["key"]])
+    #list[[i]]$key <- replace_na(list[[i]]$key, list_avgs[[i]]$key)
     
-    list2_v[[i]]$energy_2 <- replace_na(list2_v[[i]][["energy"]], list2_v_avgs[[i]][["energy"]])
+    #list[[i]]$energy <- replace_na(list[[i]]$energy, list_avgs[[i]]$energy)
     
-    list2_v[[i]]$loudness_2 <- replace_na(list2_v[[i]][["loudness"]], list2_v_avgs[[i]][["loudness"]])
+    #list[[i]]$loudness <- replace_na(list[[i]]$loudness, list_avgs[[i]]$loudness)
     
-    list2_v[[i]]$mode_2 <- replace_na(list2_v[[i]][["mode"]], list2_v_avgs[[i]][["mode"]])
+    #list[[i]]$mode <- replace_na(list[[i]]$mode, list_avgs[[i]]$mode)
     
-    list2_v[[i]]$speechiness_2 <- replace_na(list2_v[[i]][["speechiness"]], list2_v_avgs[[i]][["speechiness"]])
+    #list[[i]]$speechiness <- replace_na(list[[i]]$speechiness, list_avgs[[i]]$speechiness)
     
-    list2_v[[i]]$acousticness_2 <- replace_na(list2_v[[i]][["acousticness"]], list2_v_avgs[[i]][["acousticness"]])
+    #list[[i]]$acousticness <- replace_na(list[[i]]$acousticness, list_avgs[[i]]$acousticness)
     
-    list2_v[[i]]$instrumentalness_2 <- replace_na(list2_v[[i]][["instrumentalness"]], list2_v_avgs[[i]][["instrumentalness"]])
+    #list[[i]]$instrumentalness <- replace_na(list[[i]]$instrumentalness, list_avgs[[i]]$instrumentalness)
     
-    list2_v[[i]]$valence_2 <- replace_na(list2_v[[i]][["valence"]], list2_v_avgs[[i]][["valence"]])
+    #list[[i]]$liveness  <- replace_na(list[[i]]$liveness , list_avgs[[i]]$liveness)
     
-    list2_v[[i]]$liveness_2 <- replace_na(list2_v[[i]][["liveness"]], list2_v_avgs[[i]][["liveness"]])
+    #list[[i]]$valence <- replace_na(list[[i]]$valence, list_avgs[[i]]$valence)
     
-    list2_v[[i]]$tempo_2 <- replace_na(list2_v[[i]][["tempo"]], list2_v_avgs[[i]][["tempo"]])
-    }
+    #list[[i]]$tempo <- replace_na(list[[i]]$tempo, list_avgs[[i]]$tempo)
+  }
+  
+  return(list)
+}
+
+clean_list2 <- MrClean(list2)
 
 
