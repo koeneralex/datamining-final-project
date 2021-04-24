@@ -174,41 +174,50 @@ barplot(colSums(s),
         ylab = 'count',
         main = 'Sentiment')
 
-
-
-
-
-
-
-get_sentiment_barplot <- function(list) {
-  
-  sentiment <- get_nrc_sentiment(list)
-  
-  barplot <- barplot(colSums(sentiment),
-          las = 2,
-          col = rainbow(10),
-          ylab = 'count',
-          main = 'Sentiment')
-  
-  return(barplot)
-  
-}
-
-get_sentiment_barplot(testLyrics)
-
+################################################################################
+# Sentiment analysis for each playlist stored in "sentiment_analysis"
 
 spotify_playlists_data <- list4
 
-
 sentiment_analysis <- list()
 
-for(i in length(spotify_playlists_data)) {
+for(i in 1:length(spotify_playlists_data)) {
   
-  lyrics <- spotify_playlists_data[[i]]$lyrics
-  
-  analysis <- get_nrc_sentiment(lyrics)
-  
-  sentiment_analysis[[i]] <- analysis
+  sentiment_analysis[[i]] <- get_nrc_sentiment(spotify_playlists_data[[i]]$lyrics)
   
 }
+
+View(sentiment_analysis)
+
+
+
+
+
+get_sentiment_barplot <- function(sentiment_analysis_data) {
+  
+  barplot <- barplot(colSums(sentiment_analysis_data),
+                     las = 2,
+                     col = rainbow(10),
+                     ylab = 'count',
+                     main = 'Sentiment')
+  return(barplot)
+  
+}
+get_sentiment_barplot(sentiment_analysis[[3]])
+
+
+
+################################################################################
+
+sentiment_barplots <- list()
+
+for(i in 1:length(sentiment_analysis)) {
+  
+  sentiment_barplots[[i]] <- get_sentiment_barplot(sentiment_analysis[[i]])
+  
+}
+
+sentiment_barplots[[1]]
+sentiment_barplots[[2]]
+sentiment_barplots[[3]]
 
