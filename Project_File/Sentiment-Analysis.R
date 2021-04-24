@@ -174,8 +174,7 @@ barplot(colSums(s),
         ylab = 'count',
         main = 'Sentiment')
 
-
-
+################################################################################
 # Sentiment analysis for each playlist stored in "sentiment_analysis"
 
 spotify_playlists_data <- list4
@@ -207,6 +206,8 @@ get_sentiment_barplot <- function(sentiment_analysis_data) {
 get_sentiment_barplot(sentiment_analysis[[3]])
 
 
+
+################################################################################
 
 sentiment_barplots <- list()
 
