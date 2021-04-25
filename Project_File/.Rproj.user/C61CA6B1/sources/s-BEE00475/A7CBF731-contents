@@ -36,7 +36,7 @@ MrClean <- function(list){
     list[[i]]$lyrics <- gsub("\\d+\\w*\\d*", "", list[[i]]$lyrics)
     list[[i]]$lyrics <- gsub("#\\w+", "", list[[i]]$lyrics)
     list[[i]]$lyrics <- gsub("[^\x01-\x7F]", "", list[[i]]$lyrics)
-    list[[i]]$lyrics <- gsub("[[:punct:]]", "", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("[[:punct:]]", " ", list[[i]]$lyrics)
     
     
     # Remove spaces and newlines
@@ -65,7 +65,7 @@ MrClean <- function(list){
     list[[i]]$instrumentalness <- replace_na(list[[i]]$instrumentalness, list_avgs[[i]]$instrumentalness)
     
     list[[i]]$liveness  <- replace_na(list[[i]]$liveness, list_avgs[[i]]$liveness)
-    
+  
     list[[i]]$valence <- replace_na(list[[i]]$valence, list_avgs[[i]]$valence)
     
     list[[i]]$tempo <- replace_na(list[[i]]$tempo, list_avgs[[i]]$tempo)
@@ -76,7 +76,8 @@ MrClean <- function(list){
 
 clean_list <- MrClean(list4)
 
-clean_list[[1]]$lyrics
+
+
 
 
 

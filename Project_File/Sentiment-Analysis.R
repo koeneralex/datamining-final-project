@@ -166,6 +166,19 @@ library(syuzhet)
 
 testLyrics <- list1[[1]]$lyrics
 
+df <- list4[[1]]
+df$lyrics[1]
+
+colnames(df)
+# This is one song.
+tokens <- df[1, ] %>% 
+  unnest_tokens(input = "lyrics", 
+                output = "text") %>%
+  group_by(text) %>%
+  tally(name = "freq") %>%
+  arrange(desc(freq))
+
+
 s <- get_nrc_sentiment(testLyrics)
 
 barplot(colSums(s),
@@ -177,7 +190,7 @@ barplot(colSums(s),
 ################################################################################
 # Sentiment analysis for each playlist stored in "sentiment_analysis"
 
-spotify_playlists_data <- list4
+spotify_playlists_data <- clean_list
 
 sentiment_analysis <- list()
 
@@ -203,7 +216,7 @@ get_sentiment_barplot <- function(sentiment_analysis_data) {
   return(barplot)
   
 }
-get_sentiment_barplot(sentiment_analysis[[3]])
+get_sentiment_barplot(sentiment_analysis[[1]])
 
 
 

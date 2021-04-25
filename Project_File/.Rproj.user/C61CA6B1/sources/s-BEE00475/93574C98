@@ -8,7 +8,7 @@
     "dirty": false,
     "created": 1619302139397.0,
     "source_on_save": false,
-    "relative_order": 7,
+    "relative_order": 4,
     "properties": {
         "id": "fd36d5740c704c37accd68acbf5335cd",
         "name": "sentiment_barplots",
