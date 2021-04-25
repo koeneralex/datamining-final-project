@@ -170,6 +170,7 @@ df <- list4[[1]]
 df$lyrics[1]
 
 colnames(df)
+
 # This is one song.
 tokens <- df[1, ] %>% 
   unnest_tokens(input = "lyrics", 

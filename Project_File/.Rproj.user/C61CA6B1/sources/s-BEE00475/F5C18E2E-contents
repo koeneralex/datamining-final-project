@@ -69,14 +69,18 @@ clean_list <- MrClean(list4)
 
 MrClean_Token <- function(list){
   
-  token1 <- list %>% 
-    select(lyrics) %>%
-    unnest_tokens("word", "lyrics") %>%
-    anti_join(get_stopwords())
+  tokens <- list %>% 
+    unnest_tokens(input = "lyrics", 
+                  output = "text") %>%
+    group_by(text) %>%
+    tally(name = "freq") %>%
+    arrange(desc(freq))
   
 }
 
 token1 <- MrClean_Token(clean_list[[1]])
+
+
 
 
 

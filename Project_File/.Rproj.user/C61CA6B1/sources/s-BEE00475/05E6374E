@@ -3,24 +3,24 @@
     "path": "~/Library/Mobile Documents/com~apple~CloudDocs/School/USF-Spring-2021/data-mining/Final-Project/datamining-final-project/Project_File/MrClean.r",
     "project_path": "MrClean.r",
     "type": "r_source",
-    "hash": "0",
+    "hash": "3491436497",
     "contents": "",
     "dirty": false,
     "created": 1619292498171.0,
     "source_on_save": false,
-    "relative_order": 3,
+    "relative_order": 7,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
         "cursorPosition": "79,0",
-        "scrollLine": "56"
+        "scrollLine": "58"
     },
     "folds": "",
-    "lastKnownWriteTime": 1619305927,
+    "lastKnownWriteTime": 1619316835,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1619305927201,
+    "last_content_update": 1619316835558,
     "read_only": false,
     "read_only_alternatives": []
 }
