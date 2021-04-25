@@ -58,6 +58,9 @@ ggplot(nrc_sent, aes(x=sentiment, y=n)) +
 
 
 
+
+
+
 get_sentiment_data <- function(list){
   
   token <- MrClean_Token(list)

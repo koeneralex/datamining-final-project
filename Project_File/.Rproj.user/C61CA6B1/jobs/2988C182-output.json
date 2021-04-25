@@ -1,0 +1,8 @@
+[1,"Installing 'wordcloud2' ...\n"]
+[2,"Installing package into ‘/Users/alexkoener/Library/R/4.0/library’\n(as ‘lib’ is unspecified)\n"]
+[2,"trying URL 'https://cran.rstudio.com/bin/macosx/contrib/4.0/wordcloud2_0.2.1.tgz'\n"]
+[2,"Content type 'application/x-gzip' length 997419 bytes (974 KB)\n=========="]
+[2,"========================================\ndownloaded 974 KB\n\n"]
+[1,"The downloaded binary packages are in\n"]
+[1,"\t/var/folders/p2/w6c9fwh170x_g2dp0clkpsph0000gn/T//RtmphEip6e/downloaded_packages\n"]
+[2,"\n\n✔ Package 'wordcloud2' successfully installed.\n"]

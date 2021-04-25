@@ -36,7 +36,7 @@ MrClean <- function(list){
     list[[i]]$lyrics <- gsub("\\d+\\w*\\d*", "", list[[i]]$lyrics)
     list[[i]]$lyrics <- gsub("#\\w+", "", list[[i]]$lyrics)
     list[[i]]$lyrics <- gsub("[^\x01-\x7F]", "", list[[i]]$lyrics)
-    list[[i]]$lyrics <- gsub("[[:punct:]]", " ", list[[i]]$lyrics)
+    list[[i]]$lyrics <- gsub("[[:punct:]]", "", list[[i]]$lyrics)
     
     
     # Remove spaces and newlines

@@ -1,0 +1,26 @@
+{
+    "id": "C7387987",
+    "path": "~/Library/Mobile Documents/com~apple~CloudDocs/School/USF-Spring-2021/data-mining/Final-Project/datamining-final-project/Project_File/Spotify_sentiment_app/app.R",
+    "project_path": "Spotify_sentiment_app/app.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1619381560419.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "96,0",
+        "scrollLine": "127"
+    },
+    "folds": "5|37|20|0|\n22|26|69|0|\n71|32|78|0|\n169|36|178|0|\n181|38|190|0|\n",
+    "lastKnownWriteTime": 1619386028,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1619386028189,
+    "read_only": false,
+    "read_only_alternatives": []
+}
