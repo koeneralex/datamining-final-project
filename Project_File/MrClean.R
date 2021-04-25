@@ -46,35 +46,39 @@ MrClean <- function(list){
     list[[i]]$lyrics <- gsub("[ |\t]+", " ", list[[i]]$lyrics)
     
     
+    #Replace NA with mean
     list[[i]]$popularity <- replace_na(list[[i]]$popularity, as.integer(list_avgs[[i]]$popularity))
-    
     list[[i]]$danceability <- replace_na(list[[i]]$danceability, list_avgs[[i]]$danceability)
-    
     list[[i]]$key <- replace_na(list[[i]]$key, as.integer(list_avgs[[i]]$key))
-    
     list[[i]]$energy <- replace_na(list[[i]]$energy, list_avgs[[i]]$energy)
-    
     list[[i]]$loudness <- replace_na(list[[i]]$loudness, list_avgs[[i]]$loudness)
-    
     list[[i]]$mode <- replace_na(list[[i]]$mode, as.integer(list_avgs[[i]]$mode))
-    
     list[[i]]$speechiness <- replace_na(list[[i]]$speechiness, list_avgs[[i]]$speechiness)
-    
     list[[i]]$acousticness <- replace_na(list[[i]]$acousticness, list_avgs[[i]]$acousticness)
-    
     list[[i]]$instrumentalness <- replace_na(list[[i]]$instrumentalness, list_avgs[[i]]$instrumentalness)
-    
     list[[i]]$liveness  <- replace_na(list[[i]]$liveness, list_avgs[[i]]$liveness)
-  
     list[[i]]$valence <- replace_na(list[[i]]$valence, list_avgs[[i]]$valence)
-    
     list[[i]]$tempo <- replace_na(list[[i]]$tempo, list_avgs[[i]]$tempo)
   }
   
   return(list)
+  
 }
 
 clean_list <- MrClean(list4)
+
+MrClean_Token <- function(list){
+  
+  tokens <- list %>% 
+    unnest_tokens(input = "lyrics", 
+                  output = "text") %>%
+    group_by(text) %>%
+    tally(name = "freq") %>%
+    arrange(desc(freq))
+  
+}
+
+token1 <- MrClean_Token(clean_list[[1]])
 
 
 
