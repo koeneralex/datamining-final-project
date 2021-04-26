@@ -9,7 +9,7 @@ library(syuzhet)
 library(rtweet)         # For parsing the JSON
 library(textclean)      # For removing contractions
 library(stringr)        # For data cleaning 
-library(dplyr)          # For data manipulation
+library(plyr)          # For data manipulation
 library(ggplot2)        # For plotting graphs
 library(reshape2)       # For melting data
 library(ggmap)          # For geospatial mapping
