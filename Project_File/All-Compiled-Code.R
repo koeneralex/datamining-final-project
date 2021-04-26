@@ -376,3 +376,5 @@ grid.arrange(Indie_sent,Hiphop_sent, Pop_sent,Metal_sent,Rock_sent, nrow = 2 )
 
 
 save.image(file = "rdata_file.Rdata")
+
+write.csv(list4, file="list4")

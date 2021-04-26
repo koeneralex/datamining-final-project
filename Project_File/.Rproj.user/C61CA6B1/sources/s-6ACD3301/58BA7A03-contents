@@ -5,10 +5,17 @@ date: "4/25/2021"
 output: html_document
 ---
 
-## Libraries
 
 ```{r}
+load("rdata_file.Rdata")
+```
 
+
+## Libraries
+
+```{r, echo=TRUE, results='hide', message=FALSE}
+
+#update
 library(spotifyr)
 library(genius)
 library(tm)
@@ -89,7 +96,6 @@ indie <- get_category_playlists("indie_alt")
 Alternative10s <- get_playlist("37i9dQZF1DX873GaRGUmPl")
 EarlyAlternative <- get_playlist("37i9dQZF1DXdTCdwCKzXwo")
 Alternative00s <- get_playlist("37i9dQZF1DX0YKekzl0blG")
-head(Alternative00s)
 
 ```
 
@@ -131,19 +137,29 @@ playlist_to_df <- function(playlist){
     })
  
      }
-  
-  #output DF is dataframe with name, artist, pop score, and lyrics
+  #Adds additional track audio features to our data frame. key, energy, loudness, mode etc...
+    playID <- playlist[["id"]]
+    features_df <- get_playlist_audio_features("spotify",playID)
+    
+    try({
+      outputDF$danceability <- NA
+      outputDF$danceability <- features_df$danceability
+      outputDF$key <- features_df$key
+      outputDF$energy <- features_df$energy
+      outputDF$loudness <- features_df$loudness
+      outputDF$mode <- features_df$mode
+      outputDF$speechiness <- features_df$speechiness
+      outputDF$acousticness <- features_df$acousticness
+      outputDF$instrumentalness <- features_df$instrumentalness
+      outputDF$liveness <- features_df$liveness
+      outputDF$valence <- features_df$valence
+      outputDF$tempo <- features_df$tempo
+    })
+    
+  #output DF is dataframe with name, artist, pop score, lyrics, and audio features.
   return(outputDF)
 }
 
-```
-
-```{r, eval=FALSE}
-RapCaviar_df <- playlist_to_df(RapCaviar)
-```
-
-```{r}
-head(RapCaviar_df)
 ```
 
 
@@ -165,14 +181,22 @@ for (i in 1:length(playlistsNames)) {
   
 }
 
-head(list)
+str(list)[[1]]
+
+```
+
+```{r load rdata_file, include=FALSE}
+load("rdata_file.Rdata")
+
+list <- list4
+str(list[[1]])
 ```
 
 
 
 ## Function to clean dataframe lyrics of punctuation, capitalization, etc
 
-```{r}
+```{r, echo=TRUE, results='hide', message=FALSE}
 MrClean <- function(list){
   
   list_avgs <- lapply(list, function(x) lapply(x, mean, na.rm=TRUE))
@@ -223,7 +247,7 @@ MrClean <- function(list){
 }
 
 clean_list <- MrClean(list)
-head(clean_list)
+str(clean_list[[1]])
 ```
 
 
@@ -264,7 +288,7 @@ get_sentiment_data <- function(clean_list){
 }
 
 playlist_sentiment <- get_sentiment_data(clean_list[[1]])
-head(playlist_sentiment)
+str(playlist_sentiment)
 
 ggplot(playlist_sentiment, aes(x=sentiment, y=n)) +
   geom_col()
@@ -358,15 +382,36 @@ word_cloud <- function(genre){
   
   return(cloud)
 }
+```
 
+## Wordclouds
 
-# Testing of functions
-word_cloud(Indie_s)
+```{r, eval=FALSE}
 word_cloud(Hiphop_s)
+word_cloud(Indie_s)
 word_cloud(Pop_s)
 word_cloud(Metal_s)
 word_cloud(Rock_s)
+```
+### Hiphop
+![](wordclouds/hiphop.PNG)
 
+### Indie
+![](wordclouds/indie.PNG)
+
+### Pop
+![](wordclouds/pop.PNG)
+
+### Metal
+![](wordclouds/metal.PNG)
+
+### Rock
+![](wordclouds/rock.PNG)
+
+
+## Sentiment
+
+```{r}
 Indie_sent <- bar_chart(Indie_s, "Indie")
 Indie_sent
 Indie_pol <- bar_chart_p(Indie_s, "Indie")
@@ -394,12 +439,13 @@ Rock_pol <- bar_chart_p(Rock_s, "Rock")
 Rock_pol
 
 
-grid.arrange(Indie_sent,Hiphop_sent, Pop_sent,Metal_sent,Rock_sent, nrow = 2 )
-
-??grid.arrange(Indie_pol,Hiphop_pol, Pop_pol,Metal_pol,Rock_pol, nrow = 2 )
+grid.arrange(Indie_sent,Hiphop_sent, Pop_sent,Metal_sent,Rock_sent, nrow = 3 )
 ```
 
+
+
+
 ```{r}
-save.image(file = "rmd_data.Rdata")
+#save.image(file = "rmd_data.Rdata")
 ```
 
