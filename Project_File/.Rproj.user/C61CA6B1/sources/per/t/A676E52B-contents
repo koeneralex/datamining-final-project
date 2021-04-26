@@ -143,7 +143,7 @@ list <- list()
 
 for (i in 1:length(playlistsNames)) {
   
-  list[[i]] <- playlist_to_df_other(playlistsNames[[i]])
+  list[[i]] <- playlist_to_df(playlistsNames[[i]])
   
 }
 
@@ -340,19 +340,30 @@ word_cloud(Metal_s)
 word_cloud(Rock_s)
 
 Indie_sent <- bar_chart(Indie_s, "Indie")
+Indie_sent
 Indie_pol <- bar_chart_p(Indie_s, "Indie")
+Indie_pol
 
 Hiphop_sent <- bar_chart(Hiphop_s, "Hiphop")
+Hiphop_sent
 Hiphop_pol <- bar_chart_p(Hiphop_s, "Hiphop")
+Hiphop_pol
 
 Pop_sent <- bar_chart(Pop_s, "Pop")
+Pop_sent
 Pop_pol <- bar_chart_p(Pop_s, "Pop")
+Pop_pol
 
 Metal_sent <- bar_chart(Metal_s, "Metal")
+Metal_sent
 Metal_pol <- bar_chart_p(Metal_s, "Metal")
+Metal_pol
 
 Rock_sent <- bar_chart(Rock_s, "Rock")
+Rock_sent
+
 Rock_pol <- bar_chart_p(Rock_s, "Rock")
+Rock_pol
 
 
 grid.arrange(Indie_sent,Hiphop_sent, Pop_sent,Metal_sent,Rock_sent, nrow = 2 )
@@ -362,3 +373,6 @@ grid.arrange(Indie_sent,Hiphop_sent, Pop_sent,Metal_sent,Rock_sent, nrow = 2 )
 
 
 ################################################################################
+
+
+save.image(file = "rdata_file.Rdata")
