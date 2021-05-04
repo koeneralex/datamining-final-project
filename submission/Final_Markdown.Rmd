@@ -1,5 +1,5 @@
 ---
-title: "Final_Markdown"
+title: "Sentiment Analysis: Popular Spotify Genres"
 author: "Alex Koener, Efrain Ramos, Victoria Garcia, Ryan Hermann, and Darius Cuthbert"
 date: "4/25/2021"
 output: html_document
@@ -12,6 +12,7 @@ load("rdata_file.Rdata")
 
 
 ## Libraries
+External r-packages used in this study.
 
 ```{r, echo=TRUE, results='hide', message=FALSE}
 
@@ -36,7 +37,7 @@ library(ggplot2)
 
 
 ## Spotify authorizations to import data
-
+This is Alex's Credentials to pull Spotify data from Spotify's API.
 
 ```{r}
 
@@ -50,8 +51,8 @@ access_token <- get_spotify_access_token()
 
 
 
-## Getting playlists from Spotify
-
+## Getting Playlists from Spotify
+Using the SpotifyR package to obtain playlists from Spotify.
 
 ```{r}
 
@@ -102,10 +103,8 @@ Alternative00s <- get_playlist("37i9dQZF1DX0YKekzl0blG")
 
 
 
-## Spotify playlist to dataframe function
-
-This function takes in a Spotify Playlist Object and returns a data frame with track name, artist name, popularity
-score and lyrics. The 2 packages used were the spotifyr and genius package.
+## Spotify Playlist to Dataframe Function
+This function takes in a Spotify playlist object and returns a dataframe with track name, artist name, popularity, and lyrics. The 2 packages used were the spotifyr and genius package.
 
 ```{r}
 
@@ -164,7 +163,8 @@ playlist_to_df <- function(playlist){
 
 
 
-## For loop to turn every playlist to dataframe.
+## Turn Every Playlist to Dataframe.
+For loop with custom function to turn playlists into usable dataframes.
 
 ```{r, eval=FALSE}
 playlistsNames <- list(RapCaviar, MostNecessary, SignedXOXO, TodaysTopHits,
@@ -194,7 +194,8 @@ str(list[[1]])
 
 
 
-## Function to clean dataframe lyrics of punctuation, capitalization, etc.
+## MrClean Function for Data Munging
+Function to clean dataframe lyrics of punctuation, capitalization, etc.
 
 ```{r, echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 MrClean <- function(list){
@@ -252,7 +253,8 @@ str(clean_list[[1]])
 
 
 
-## Function to tokenize lyrics
+## Tokenization
+Function to tokenize lyrics into separate words.
 
 ```{r}
 MrClean_Token <- function(list){
@@ -267,7 +269,8 @@ MrClean_Token <- function(list){
 
 
 
-## Function to conduct sentiment analysis given playlist
+## Sentiment Analysis
+Function to conduct sentiment analysis given playlist.
 
 ```{r}
 get_sentiment_data <- function(clean_list){
@@ -296,8 +299,8 @@ ggplot(playlist_sentiment, aes(x=sentiment, y=n)) +
 
 
 
-## Sentiment Visualizations.
-
+## Sentiment Visualizations
+Visualizations for sentiment analysis results.
 
 ```{r}
 #Hiphop - Setting up to combine playlists into genre
@@ -385,6 +388,7 @@ word_cloud <- function(genre){
 ```
 
 ## Wordclouds
+Most frequent words used in popular genres.
 
 ```{r, eval=FALSE}
 word_cloud(Hiphop_s)
