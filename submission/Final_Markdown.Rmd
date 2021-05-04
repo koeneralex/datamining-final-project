@@ -1,8 +1,11 @@
 ---
-title: "Sentiment Analysis: Popular Spotify Genres"
+title: 'Sentiment Analysis: Popular Spotify Genres'
 author: "Alex Koener, Efrain Ramos, Victoria Garcia, Ryan Hermann, and Darius Cuthbert"
 date: "4/25/2021"
-output: html_document
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
 ---
 
 
