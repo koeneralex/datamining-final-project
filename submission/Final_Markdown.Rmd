@@ -1,6 +1,6 @@
 ---
 title: "Final_Markdown"
-author: "Alex Koener"
+author: "Alex Koener, Efrain Ramos, Victoria Garcia, Ryan Hermann, and Darius Cuthbert"
 date: "4/25/2021"
 output: html_document
 ---
@@ -194,9 +194,9 @@ str(list[[1]])
 
 
 
-## Function to clean dataframe lyrics of punctuation, capitalization, etc
+## Function to clean dataframe lyrics of punctuation, capitalization, etc.
 
-```{r, echo=TRUE, results='hide', message=FALSE}
+```{r, echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 MrClean <- function(list){
   
   list_avgs <- lapply(list, function(x) lapply(x, mean, na.rm=TRUE))
